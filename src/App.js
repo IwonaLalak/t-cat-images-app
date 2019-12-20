@@ -15,11 +15,11 @@ function App() {
             <Router>
                 <Header/>
                 <Wrapper>
-                <Switch>
-                    <Route exact path={"/"} render={(props)=><HomeView {...props}/>} />
-                    <Route exact path={"/favourites"} render={(props)=><FavouritesView {...props}/>} />
-                    <Redirect to={'/'}/>
-                </Switch>
+                    <Switch>
+                        <Route exact path={"/"} render={(props)=><HomeView {...props}/>} />
+                        <Route exact path={"/favourites"} render={(props)=><FavouritesView {...props}/>} />
+                        <Redirect to={'/'}/>
+                    </Switch>
                 </Wrapper>
                 <Footer/>
             </Router>

@@ -1,0 +1,25 @@
+@import "../variables";
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999;
+
+  #footerShadow {
+    display: block;
+    content: "";
+    height: 50px;
+    background: linear-gradient(transparent 20%, @bg-primary-color 80%);
+
+  }
+  #footerContainer {
+    background: @bg-primary-color;
+
+    #footerContent {
+      text-align: center;
+      padding: 3px 0 10px 0;
+      font-size: 0.75rem;
+    }
+  }
+}
