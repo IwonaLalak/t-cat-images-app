@@ -1,16 +1,21 @@
 import React from 'react';
 import Navigation from "../../components/headerComponents/navigation/Navigation";
 import Logo from "../../components/headerComponents/logo/Logo";
+import {withRouter} from 'react-router-dom';
 import {Col, Container, Row} from "react-bootstrap";
 
-const Header = () => {
+
+const Header = (props) => {
+
+    let {location} = props;
+
     return (
         <header>
             <Container>
                 <Row>
                     <Col lg={12}>
                         <Logo/>
-                        <Navigation/>
+                        <Navigation location={location}/>
                     </Col>
                 </Row>
             </Container>
@@ -18,4 +23,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default withRouter(props => <Header {...props}/>);
