@@ -1,16 +1,28 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faCat } from "@fortawesome/free-solid-svg-icons";
+import {BrowserRouter as Router, Link, Redirect, Route, Switch, withRouter} from 'react-router-dom';
+import HomeView from "./views/home/HomeView";
+import FavouritesView from "./views/favourites/FavouritesView";
+import Header from "./shared/header/Header";
+import Footer from "./shared/footer/Footer";
+import Wrapper from "./shared/wrapper/Wrapper";
 
 
 function App() {
     return (
         <div id="app">
-            <p>
-                <FontAwesomeIcon icon={faCat} />  Cat images app supported by <a href={"https://thecatapi.com"} target={"_blank"} style={{color: "dodgerblue"}}>CAT API</a>
-            </p>
+            <Router>
+                <Header/>
+                <Wrapper>
+                <Switch>
+                    <Route exact path={"/"} render={(props)=><HomeView {...props}/>} />
+                    <Route exact path={"/favourites"} render={(props)=><FavouritesView {...props}/>} />
+                    <Redirect to={'/'}/>
+                </Switch>
+                </Wrapper>
+                <Footer/>
+            </Router>
         </div>
     );
 }
