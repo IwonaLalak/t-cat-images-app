@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Anton Regular'), local('Anton-Regular'), url(https://fonts.gstatic.com/s/anton/v11/1Ptgg87LROyAm3Kz-Co.ttf) format('truetype');
+}
 html,
 body {
   margin: 0;
@@ -6,6 +13,84 @@ body {
 #app {
   background: #191932;
   min-height: 100vh;
-  color: #fff;
+}
+#app * {
+  font-family: 'Anton', sans-serif;
+  color: #c0f1eb;
+}
+#app a {
+  transition: all ease 0.5s;
+}
+#app a * {
+  transition: all ease 0.5s;
+}
+#app a:hover {
+  text-decoration: none;
+  color: #47e1e3;
+}
+#app a:hover * {
+  text-decoration: none;
+  color: #47e1e3;
+}
+header {
+  background: #0b0d1a;
+  position: fixed;
+  width: 100%;
+  padding: 5px 0;
+}
+header #logo {
+  float: left;
+  margin: 0;
+}
+header #logo .fa-cat {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 2rem;
+  position: relative;
+  top: -2px;
+}
+header #logo .fa-cat * {
+  color: #47e1e3;
+}
+header #logo span {
+  display: inline-block;
+}
+header #logo span:first-of-type {
+  color: #47e1e3;
+  font-size: 2rem;
+}
+header #logo span:last-of-type {
+  margin-left: 2px;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+header nav {
+  float: right;
+}
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  display: inline-block;
+  margin-right: 15px;
+}
+header nav ul li:last-of-type {
+  margin-right: 0;
+}
+header nav ul li a {
+  display: block;
+  font-size: 1rem;
+  line-height: 3rem;
+}
+header nav ul li.active * {
+  color: #47e1e3 !important;
+}
+header::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: transparent;
+  clear: both;
 }
 /*# sourceMappingURL=styles.css.map */

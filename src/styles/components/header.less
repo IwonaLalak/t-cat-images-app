@@ -1,0 +1,75 @@
+@import "../variables";
+
+
+
+header{
+
+  background: @bg-header-color;
+  position:fixed;
+  width:100%;
+  padding:5px 0;
+
+  #logo{
+    float:left;
+    margin:0;
+
+    .fa-cat{
+      display:inline-block;
+      margin-right: 15px;
+      font-size: 2rem;
+      position:relative;
+      top:-2px;
+      *{
+        color: @font-secondary-color;
+      }
+    }
+    span{
+      display:inline-block;
+
+      &:first-of-type{
+        color: @font-secondary-color;
+        font-size: 2rem;
+      }
+      &:last-of-type{
+        margin-left: 2px;
+        font-style:italic;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  nav{
+    float:right;
+    ul{
+      margin:0;
+      padding:0;
+      li{
+        display:inline-block;
+        margin-right:15px;
+        &:last-of-type{
+          margin-right: 0;
+        }
+
+        a{
+          display:block;
+          font-size: 1rem;
+          line-height: 3rem;
+        }
+
+        &.active{
+          *{
+            color:@font-secondary-color !important;
+          }
+        }
+      }
+    }
+  }
+
+  &::after{
+    content:"";
+    display: block;
+    height:1px;
+    background: transparent;
+    clear:both;
+  }
+
+}

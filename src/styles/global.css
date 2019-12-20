@@ -1,0 +1,11 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  background: #191932;
+  min-height: 100vh;
+  color: #fff;
+}
+/*# sourceMappingURL=global.css.map */

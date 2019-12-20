@@ -1,0 +1,33 @@
+@import "variables";
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  background: @bg-primary-color;
+  min-height: 100vh;
+
+  * {
+    font-family: @font-family;
+    color: @font-primary-color;
+  }
+
+  a {
+    transition: all ease 0.5s;
+    * {
+      transition: all ease 0.5s;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: @font-secondary-color;
+      * {
+        text-decoration: none;
+        color: @font-secondary-color;
+      }
+    }
+  }
+
+}
