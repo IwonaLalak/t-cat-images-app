@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ImagesView from "./ImagesView";
 import {Col, Row} from "react-bootstrap";
+import ImagesFilter from "./ImagesFilter";
 
 class ImagesContainer extends Component{
 
@@ -19,10 +20,10 @@ class ImagesContainer extends Component{
         return (
             <div id={'ImagesContainer'}>
                 <Row>
-                    <Col xs={12} lg={8}>
-
+                    <Col xs={12} lg={9}>
+                        <ImagesFilter/>
                     </Col>
-                    <Col xs={12} lg={4}>
+                    <Col xs={12} lg={3}>
                         <ImagesView handleChangeView={this.onChangeView} active={view}/>
                     </Col>
                 </Row>
