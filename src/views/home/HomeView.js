@@ -27,6 +27,20 @@ class HomeView extends Component {
                 "id": "4ih",
                 "url": "https://cdn2.thecatapi.com/images/4ih.gif",
                 "width": 400
+            },
+            {
+                "breeds": [],
+                "height": 612,
+                "id": "6md",
+                "url": "https://cdn2.thecatapi.com/images/6md.jpg",
+                "width": 612
+            },
+            {
+                "breeds": [],
+                "height": 667,
+                "id": "MTc4Mjk2Ng",
+                "url": "https://cdn2.thecatapi.com/images/MTc4Mjk2Ng.jpg",
+                "width": 500
             }
         ]
 
@@ -34,8 +48,11 @@ class HomeView extends Component {
     }
 
     render() {
+
+        let {data} = this.state;
+
         return (
-            <ImagesContainer/>
+            <ImagesContainer data={data}/>
         );
     }
 }

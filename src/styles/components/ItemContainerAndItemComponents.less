@@ -1,0 +1,42 @@
+@import "../variables";
+
+.ItemContainer {
+  background: @primary-color-darkest;
+
+  .ItemImage {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .ItemActions {
+    ul {
+      margin: 10px 0 0;
+      padding: 0;
+      text-align: center;
+      li {
+        display: inline-block;
+        cursor: pointer;
+        padding: 15px 25px;
+
+        .fa-heart, .fa-link {
+          font-size: 2.5rem;
+        }
+        span {
+          display: block;
+          margin-top: 5px;
+          i {
+            font-size: 70%;
+            color: @copied-color !important;
+          }
+        }
+      }
+      .addedToFavourites {
+        *:not(span) {
+          color: @favourite-color !important;
+        }
+      }
+
+    }
+  }
+}

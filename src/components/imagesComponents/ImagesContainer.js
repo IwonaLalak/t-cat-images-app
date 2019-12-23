@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ImagesView from "./ImagesView";
 import {Col, Row} from "react-bootstrap";
 import ImagesFilter from "./ImagesFilter";
+import ImagesList from "./list/ImagesList";
 
 class ImagesContainer extends Component{
 
@@ -16,6 +17,7 @@ class ImagesContainer extends Component{
     render() {
 
         let {view} = this.state;
+        let {data} = this.props;
 
         return (
             <div id={'ImagesContainer'}>
@@ -28,7 +30,9 @@ class ImagesContainer extends Component{
                     </Col>
                 </Row>
                 <div>
-                    {view}
+                    {
+                        view === 'list' && <ImagesList data={data}/>
+                    }
                 </div>
             </div>
         );

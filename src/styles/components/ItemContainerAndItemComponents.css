@@ -1,0 +1,17 @@
+.ItemContainer {
+  border: 1px solid red;
+}
+.ItemContainer .ItemImage img {
+  max-width: 100%;
+}
+.ItemContainer .ItemActions ul {
+  margin: 0;
+  padding: 0;
+}
+.ItemContainer .ItemActions ul li {
+  display: inline-block;
+}
+.ItemContainer .ItemActions ul li.addedToFavourites .fa-heart {
+  color: red;
+}
+/*# sourceMappingURL=ItemContainerAndItemComponents.css.map */
