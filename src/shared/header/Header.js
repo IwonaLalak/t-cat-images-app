@@ -1,6 +1,6 @@
 import React from 'react';
-import Navigation from "../../components/headerComponents/navigation/Navigation";
-import Logo from "../../components/headerComponents/logo/Logo";
+import Navigation from "./components/navigation/Navigation";
+import Logo from "./components/logo/Logo";
 import {withRouter} from 'react-router-dom';
 import {Col, Container, Row} from "react-bootstrap";
 

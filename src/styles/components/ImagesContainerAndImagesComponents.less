@@ -1,0 +1,26 @@
+@import "../variables";
+
+#ImagesContainer {
+
+  #ImagesFilter {
+
+  }
+
+  #ImageView {
+    ul {
+      padding: 0;
+      margin: 0;
+      text-align: right;
+      li {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+
+        &.active * {
+          color: @secondary-color
+        }
+      }
+    }
+  }
+
+}

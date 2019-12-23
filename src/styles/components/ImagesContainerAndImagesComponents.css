@@ -1,0 +1,8 @@
+#ImagesContainer #ImageView ul {
+  padding: 0;
+  margin: 0;
+}
+#ImagesContainer #ImageView ul li {
+  display: inline-block;
+}
+/*# sourceMappingURL=ImagesContainerAndImagesComponents.css.map */

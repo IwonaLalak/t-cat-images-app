@@ -118,4 +118,17 @@ footer #footerContainer #footerContent {
   padding: 3px 0 10px 0;
   font-size: 0.75rem;
 }
+#ImagesContainer #ImageView ul {
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+#ImagesContainer #ImageView ul li {
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+#ImagesContainer #ImageView ul li.active * {
+  color: #47e1e3;
+}
 /*# sourceMappingURL=styles.css.map */

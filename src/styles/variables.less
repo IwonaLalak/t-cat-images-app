@@ -1,13 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
-// font
-@font-family: 'Anton', sans-serif;
-@font-primary-color: #c0f1eb;
-@font-secondary-color: #47e1e3;
+@primary-color: #191932;
+@primary-color-darker: #0d102a;
+@primary-color-darkest: #0b0d1a;
 
+@secondary-color: #47e1e3;
+@secondary-color-lighter: #c0f1eb;
+
+// fonts
+@font-family: 'Anton', sans-serif;
+@font-primary-color: @secondary-color-lighter;
+@font-secondary-color: @secondary-color;
+
+// icons
+
+@icon-view-active-color: @secondary-color;
 
 // layout
 
-@bg-primary-color: #191932;
-@bg-secondary-color: #0d102a;
-@bg-header-color: #0b0d1a;
+@bg-primary-color: @primary-color;
+@bg-secondary-color: @primary-color-darker;
+@bg-header-color: @primary-color-darkest;
