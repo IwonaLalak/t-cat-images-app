@@ -1,50 +1,39 @@
 import React, {Component} from 'react';
 import ImagesContainer from "../../components/imagesComponents/ImagesContainer";
+import ImagesService from "../../services/ImagesService";
 
 class HomeView extends Component {
 
     state = {
         data: [],
         filters: [],
+
+        page: 0,
+        limit: 10,
+
+        isLoading:false,
+        isComplete:false,
+        isError:false,
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getImages();
     }
 
-    getImages = (filters = this.state.filters) => {
+    getImages = (page = this.state.page, limit = this.state.limit, filters = this.state.filters) => {
 
-        let sample = [
-            {
-                "breeds": [],
-                "categories": [
-                    {
-                        "id": 10,
-                        "name": "kittens"
-                    }
-                ],
-                "height": 300,
-                "id": "4ih",
-                "url": "https://cdn2.thecatapi.com/images/4ih.gif",
-                "width": 400
-            },
-            {
-                "breeds": [],
-                "height": 612,
-                "id": "6md",
-                "url": "https://cdn2.thecatapi.com/images/6md.jpg",
-                "width": 612
-            },
-            {
-                "breeds": [],
-                "height": 667,
-                "id": "MTc4Mjk2Ng",
-                "url": "https://cdn2.thecatapi.com/images/MTc4Mjk2Ng.jpg",
-                "width": 500
-            }
-        ]
+        this.setState({isLoading:true})
 
-        this.setState({data:sample})
+        ImagesService.prepareQueryAndSendRequest(page, limit, null)
+            .then(({data}) => {
+                this.setState({data})
+                this.setState({isLoading:false, isComplete:true, isError:(!data.length>0),})
+            })
+            .catch((error) => {
+                console.log(error)
+                this.setState({isLoading:false, isComplete:true, isError:true,})
+
+            })
     }
 
     render() {
@@ -52,6 +41,7 @@ class HomeView extends Component {
         let {data} = this.state;
 
         return (
+            // todo zrobić hooki z ładowaniem i takie tam
             <ImagesContainer data={data}/>
         );
     }
