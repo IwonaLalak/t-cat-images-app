@@ -37,11 +37,11 @@ header {
   position: fixed;
   z-index: 9999;
   width: 100%;
-  padding: 5px 0;
 }
 header #logo {
   float: left;
   margin: 0;
+  padding: 5px 0;
 }
 header #logo .fa-cat {
   display: inline-block;
@@ -66,6 +66,7 @@ header #logo span:last-of-type {
   font-size: 1.5rem;
 }
 header nav {
+  padding: 5px 0;
   float: right;
 }
 header nav ul {
@@ -84,19 +85,24 @@ header nav ul li a {
   font-size: 1rem;
   line-height: 3rem;
 }
+@media screen and (max-width: 450px) {
+  header nav ul li a span {
+    display: none;
+  }
+}
 header nav ul li.active * {
   color: #47e1e3 !important;
 }
-header::after {
+header:after {
   content: "";
   display: block;
   height: 1px;
-  background: transparent;
+  background: #07070e;
   clear: both;
 }
 #wrapper {
   padding-top: 5rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 5rem;
 }
 footer {
   position: fixed;
@@ -121,6 +127,9 @@ footer #footerContainer #footerContent {
 #ImagesContainer #ImagesFilter button {
   padding-left: 0;
 }
+#ImagesContainer #ImagesFilter button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(71, 225, 227, 0.15);
+}
 #ImagesContainer #ImagesFilter form {
   margin-top: 5px;
 }
@@ -140,17 +149,34 @@ footer #footerContainer #footerContent {
 #ImagesContainer #ImagesList {
   margin-top: 25px;
 }
+#ImagesContainer #ImagesList button.btn-primary {
+  background: #37b7b9;
+  border-color: #37b7b9;
+}
+#ImagesContainer #ImagesList button.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(71, 225, 227, 0.15);
+}
 #ImagesContainer #ImagesList .ImagesListRow {
   margin-bottom: 25px;
 }
 .ItemContainer {
   background: #0b0d1a;
+  padding: 25px;
+  border-radius: 3px;
 }
 .ItemContainer .ItemImage img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 40vh;
+  max-height: 80vh;
+  display: block;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+.ItemContainer .ItemActions {
+  padding-top: 10px;
 }
 .ItemContainer .ItemActions ul {
-  margin: 10px 0 0;
+  margin: 0;
   padding: 0;
   text-align: center;
 }
@@ -158,6 +184,9 @@ footer #footerContainer #footerContent {
   display: inline-block;
   cursor: pointer;
   padding: 15px 25px;
+}
+.ItemContainer .ItemActions ul li * {
+  transition: all ease 0.5s;
 }
 .ItemContainer .ItemActions ul li .fa-heart,
 .ItemContainer .ItemActions ul li .fa-link {
@@ -169,9 +198,18 @@ footer #footerContainer #footerContent {
 }
 .ItemContainer .ItemActions ul li span i {
   font-size: 70%;
-  color: yellowgreen !important;
+  color: #37b7b9 !important;
+}
+.ItemContainer .ItemActions ul li:hover:not(.addedToFavourites) *:not(span):not(i) {
+  color: #47e1e3 !important;
 }
 .ItemContainer .ItemActions ul .addedToFavourites *:not(span) {
-  color: red !important;
+  color: #ff2d4d !important;
+}
+@media screen and (max-width: 450px) {
+  .ItemContainer .ItemActions li {
+    font-size: 70%;
+    padding-bottom: 0 !important;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -4,7 +4,7 @@ export default {
     styles: {
         option: (provided, state) => ({
             ...provided,
-            backgroundColor: state.isFocused? jsColors.primaryDarker : state.isSelected? jsColors.primaryDarkest : jsColors.primaryDarkest,
+            backgroundColor: state.isFocused? jsColors.secondaryDarker : state.isSelected? jsColors.primaryDarkest : jsColors.primaryDarkest,
         }),
         control: (provided, state) => ({
             ...provided,

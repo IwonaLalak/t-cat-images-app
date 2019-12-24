@@ -9,17 +9,17 @@ const Navigation = ({location: {pathname}}) => {
             <ul>
                 <li className={pathname === '/' && 'active'}>
                     <Link to={'/'}>
-                        <FontAwesomeIcon icon={faHome}/> Home
+                        <FontAwesomeIcon icon={faHome}/> <span>Home</span>
                     </Link>
                 </li>
                 <li className={pathname === '/favourites' && 'active'}>
                     <Link to={'/favourites'}>
-                        <FontAwesomeIcon icon={faHeart}/> My favs
+                        <FontAwesomeIcon icon={faHeart}/> <span>My favs</span>
                     </Link>
                 </li>
                 <li>
                     <Link to={'/favourites'}>
-                        <FontAwesomeIcon icon={faUser}/> Log in
+                        <FontAwesomeIcon icon={faUser}/> <span>Log in</span>
                     </Link>
                 </li>
             </ul>

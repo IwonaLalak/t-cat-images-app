@@ -2,22 +2,34 @@
 
 .ItemContainer {
   background: @primary-color-darkest;
+  padding: 25px;
+  border-radius:3px;
 
   .ItemImage {
     img {
-      max-width: 100%;
+      width: 100%;
+      max-width: 40vh;
+      max-height: 80vh;
+      display: block;
+      margin: 0 auto;
+      border-radius:3px;
     }
   }
 
   .ItemActions {
+    padding-top: 10px;
     ul {
-      margin: 10px 0 0;
+      margin: 0;
       padding: 0;
       text-align: center;
       li {
         display: inline-block;
         cursor: pointer;
         padding: 15px 25px;
+
+        *{
+          transition: all ease 0.5s;
+        }
 
         .fa-heart, .fa-link {
           font-size: 2.5rem;
@@ -30,6 +42,13 @@
             color: @copied-color !important;
           }
         }
+
+        &:hover:not(.addedToFavourites) {
+          *:not(span):not(i) {
+            color: @secondary-color !important;
+          }
+        }
+
       }
       .addedToFavourites {
         *:not(span) {
@@ -38,5 +57,13 @@
       }
 
     }
+
+    @media screen and (max-width: 450px){
+      li{
+        font-size:70%;
+        padding-bottom:0 !important;
+      }
+    }
+
   }
 }
