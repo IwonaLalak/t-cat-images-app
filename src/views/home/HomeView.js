@@ -25,7 +25,7 @@ class HomeView extends Component {
 
         this.setState({isLoading: true})
 
-        ImagesService.prepareQueryAndSendRequest(page, limit, null)
+        ImagesService.prepareQueryAndSendRequest(page, 50, null)
             .then(({data}) => {
                 this.setState({data})
                 this.setState({isLoading: false, isComplete: true, hasNoRecords: data.length === 0})

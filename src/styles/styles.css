@@ -164,13 +164,35 @@ footer #footerContainer #footerContent {
   padding: 25px;
   border-radius: 3px;
 }
-.ItemContainer .ItemImage img {
-  width: 100%;
+@media screen and (max-width: 450px) {
+  .ItemContainer {
+    padding: 15px 0;
+  }
+}
+.ItemContainer .ItemImage .LazyLoad {
   max-width: 40vh;
   max-height: 80vh;
   display: block;
   margin: 0 auto;
+}
+.ItemContainer .ItemImage .LazyLoad img {
+  width: 100%;
   border-radius: 3px;
+  transition: visibility 0s, opacity 1s linear;
+}
+@media screen and (max-width: 450px) {
+  .ItemContainer .ItemImage .LazyLoad img {
+    max-width: 85vw;
+  }
+}
+.ItemContainer .ItemImage .loadingBackground {
+  text-align: center;
+  transform: translateY(20%);
+}
+.ItemContainer .ItemImage .loadingBackground .fa-cat {
+  font-size: 1.5rem;
+  position: absolute;
+  transform: translate(-50%, -240%);
 }
 .ItemContainer .ItemActions {
   padding-top: 10px;
@@ -203,13 +225,13 @@ footer #footerContainer #footerContent {
 .ItemContainer .ItemActions ul li:hover:not(.addedToFavourites) *:not(span):not(i) {
   color: #47e1e3 !important;
 }
-.ItemContainer .ItemActions ul .addedToFavourites *:not(span) {
-  color: #ff2d4d !important;
-}
 @media screen and (max-width: 450px) {
-  .ItemContainer .ItemActions li {
+  .ItemContainer .ItemActions ul li {
     font-size: 70%;
     padding-bottom: 0 !important;
   }
+}
+.ItemContainer .ItemActions ul .addedToFavourites *:not(span) {
+  color: #ff2d4d !important;
 }
 /*# sourceMappingURL=styles.css.map */
