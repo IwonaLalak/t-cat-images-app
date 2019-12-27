@@ -10,7 +10,7 @@ class ImagesFilter extends Component {
 
     state = {
         categories: [],
-        breeds: []
+        breeds: [],
     }
 
     componentDidMount() {
@@ -18,34 +18,38 @@ class ImagesFilter extends Component {
         this.getBreeds()
     }
 
-    getCategories() {
+    getCategories = () => {
         CategoriesService.getAllCategories().then(({data}) => {
 
-            this.setState({categories:data})
+            this.setState({categories: data})
 
         }).catch((err) => {
 
         })
     }
 
-    getBreeds(){
+    getBreeds = () => {
         BreedsService.getAllBreeds().then(({data}) => {
 
-            this.setState({breeds:data})
+            this.setState({breeds: data})
 
         }).catch((err) => {
 
         })
+    }
+
+    onClickPanel = () => {
+        this.props.handleClickExpand();
     }
 
     render() {
 
-        const {categories,breeds} = this.state;
+        const {categories, breeds} = this.state;
 
         return (
             <div id={'ImagesFilter'}>
                 <Accordion>
-                    <Accordion.Toggle as={Button} variant={"button"} eventKey={0}>
+                    <Accordion.Toggle as={Button} variant={"button"} eventKey={0} onClick={this.onClickPanel}>
                         <FontAwesomeIcon icon={faFilter}/> set filters
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey={0}>

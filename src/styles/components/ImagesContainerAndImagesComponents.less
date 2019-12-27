@@ -3,14 +3,21 @@
 #ImagesContainer {
 
   #ImagesFilter {
-    button{
-      padding-left:0;
-      &:focus{
-        box-shadow: 0 0 0 0.2rem rgba(@secondary-color-rgb,.15)
+    button {
+      padding-left: 0;
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(@secondary-color-rgb, .15)
       }
     }
-    form{
-      margin-top:5px;
+    form {
+      margin-top: 5px;
+
+      .form-group {
+        margin-bottom: 0;
+        .col-lg-6 {
+          margin-bottom: 1rem;
+        }
+      }
     }
   }
 
@@ -31,18 +38,18 @@
     }
   }
 
-  #ImagesList{
-    margin-top:25px;
+  #ImagesList {
+    margin-top: 25px;
 
-    button.btn-primary{
+    button.btn-primary {
       background: @secondary-color-darker;
       border-color: @secondary-color-darker;
-      &:focus{
-        box-shadow: 0 0 0 0.2rem rgba(@secondary-color-rgb,.15)
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(@secondary-color-rgb, .15)
       }
     }
 
-    .ImagesListRow{
+    .ImagesListRow {
       margin-bottom: 25px;
     }
   }

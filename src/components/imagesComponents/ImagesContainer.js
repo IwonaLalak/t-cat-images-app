@@ -13,24 +13,31 @@ class ImagesContainer extends Component {
 
     state = {
         view: "list", // or "tile"
+        isExpanded: false,
     }
 
     onChangeView = (type) => {
         this.setState({view: type})
     }
 
+    onClickExpand = () => {
+        this.setState((prevState => {
+            return {isExpanded: !prevState.isExpanded}
+        }))
+    }
+
     render() {
 
-        let {view} = this.state;
+        let {view, isExpanded} = this.state;
         let {data} = this.props;
 
         return (
             <div id={'ImagesContainer'}>
                 <Row>
-                    <Col xs={12} lg={9}>
-                        <ImagesFilter/>
+                    <Col xs={isExpanded ? 12 : 9} lg={9}>
+                        <ImagesFilter handleClickExpand={this.onClickExpand}/>
                     </Col>
-                    <Col xs={12} lg={3}>
+                    <Col xs={isExpanded ? 12 : 3} lg={3}>
                         <ImagesView handleChangeView={this.onChangeView} active={view}/>
                     </Col>
                 </Row>

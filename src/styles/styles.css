@@ -133,6 +133,12 @@ footer #footerContainer #footerContent {
 #ImagesContainer #ImagesFilter form {
   margin-top: 5px;
 }
+#ImagesContainer #ImagesFilter form .form-group {
+  margin-bottom: 0;
+}
+#ImagesContainer #ImagesFilter form .form-group .col-lg-6 {
+  margin-bottom: 1rem;
+}
 #ImagesContainer #ImageView ul {
   padding: 0;
   margin: 0;
