@@ -12,10 +12,7 @@ export default class ImagesService{
     }
 
     static prepareQueryAndSendRequest = (page,limit,filters) =>{
-
-        //return new Promise((resolve,reject)=>{
-            return this.getImagesWithSearchQueryParams(page,limit)
-       // })
+         return this.getImagesWithSearchQueryParams(page,limit)
     }
 
 }

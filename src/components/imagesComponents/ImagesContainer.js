@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import ImagesView from "./ImagesView";
 import {Col, Row} from "react-bootstrap";
 import ImagesFilter from "./ImagesFilter";
 import ImagesList from "./list/ImagesList";
+import withLoading from "../../shared/hoc/withLoading";
+import withHandleError from "../../shared/hoc/withHandleError";
+import withHandleNoRecords from "../../shared/hoc/withHandleNoRecords";
+import {compose} from "recompose";
 
-class ImagesContainer extends Component{
+class ImagesContainer extends Component {
 
-    state={
-        view:"list", // or "tile"
+    state = {
+        view: "list", // or "tile"
     }
 
-    onChangeView = (type) =>{
-        this.setState({view:type})
+    onChangeView = (type) => {
+        this.setState({view: type})
     }
 
     render() {
@@ -39,4 +44,11 @@ class ImagesContainer extends Component{
     }
 }
 
-export default ImagesContainer;
+ImagesContainer.propTypes = {
+    data: PropTypes.array,
+    isLoading: PropTypes.bool,
+    getError: PropTypes.bool,
+    isComplete: PropTypes.bool,
+}
+
+export default compose(withLoading, withHandleNoRecords, withHandleError)(ImagesContainer);

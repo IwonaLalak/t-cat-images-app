@@ -11,9 +11,10 @@ class HomeView extends Component {
         page: 0,
         limit: 10,
 
-        isLoading:false,
-        isComplete:false,
-        isError:false,
+        isLoading: false,
+        isComplete: false,
+        hasNoRecords: false,
+        isError: false,
     }
 
     componentDidMount() {
@@ -22,27 +23,26 @@ class HomeView extends Component {
 
     getImages = (page = this.state.page, limit = this.state.limit, filters = this.state.filters) => {
 
-        this.setState({isLoading:true})
+        this.setState({isLoading: true})
 
         ImagesService.prepareQueryAndSendRequest(page, limit, null)
             .then(({data}) => {
                 this.setState({data})
-                this.setState({isLoading:false, isComplete:true, isError:(!data.length>0),})
+                this.setState({isLoading: false, isComplete: true, hasNoRecords: data.length === 0})
             })
             .catch((error) => {
                 console.log(error)
-                this.setState({isLoading:false, isComplete:true, isError:true,})
+                this.setState({isLoading: false, isComplete: false, isError: true})
 
             })
     }
 
     render() {
 
-        let {data} = this.state;
+        let {data, isLoading, isComplete, isError, hasNoRecords} = this.state;
 
         return (
-            // todo zrobić hooki z ładowaniem i takie tam
-            <ImagesContainer data={data}/>
+            <ImagesContainer data={data} isLoading={isLoading} isComplete={isComplete} isError={isError} hasNoRecords={hasNoRecords}/>
         );
     }
 }
