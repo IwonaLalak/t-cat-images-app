@@ -4,6 +4,7 @@ import ImagesService from "../../services/ImagesService";
 import {Col, Row} from "react-bootstrap";
 import ImagesFilter from "../../components/imagesComponents/ImagesFilter";
 import ImagesView from "../../components/imagesComponents/ImagesView";
+import ImagesTileContainer from "../../components/imagesComponents/tile/ImagesTileContainer";
 
 class HomeView extends Component {
 
@@ -32,6 +33,8 @@ class HomeView extends Component {
 
         this.setState({isLoading: true})
 
+        console.log(page, limit, filters)
+
         ImagesService.prepareQueryAndSendRequest(page, limit, filters)
             .then(({data}) => {
                 this.setState({data})
@@ -45,11 +48,10 @@ class HomeView extends Component {
     }
 
     onChangeFilters = (filters) => {
-        console.log(filters)
         this.setState({
                 filters: filters,
                 page: 0,
-                limit: 10,
+                limit: this.state.view === "list" ? 10 : 1,
             }, () => {
                 this.getImages();
             }
@@ -57,7 +59,6 @@ class HomeView extends Component {
     }
 
     onClickLoadMore = () => {
-
         this.setState(prevState => ({
                 page: prevState.page + 1,
             }
@@ -73,12 +74,35 @@ class HomeView extends Component {
     }
 
     onChangeView = (type) => {
-        this.setState({view: type})
+        this.setState({
+            view: type,
+            limit: type === 'list' ? 10 : 1
+        }, () => {
+            this.getImages();
+        });
+    }
+
+    onClickPrevious = () => {
+        this.setState(prevState => ({
+                page: prevState.page - 1,
+            }
+        ), () => {
+            this.getImages();
+        });
+    }
+
+    onClickNext = () => {
+        this.setState(prevState => ({
+                page: prevState.page + 1,
+            }
+        ), () => {
+            this.getImages();
+        });
     }
 
     render() {
 
-        let {data, isLoading, isComplete, isError, hasNoRecords, isExpanded, view} = this.state;
+        let {data, isLoading, isComplete, isError, hasNoRecords, isExpanded, view, page} = this.state;
 
         return (
             <div id={'ImagesContainer'}>
@@ -91,12 +115,15 @@ class HomeView extends Component {
                     </Col>
                 </Row>
                 <ImagesContainer data={data}
+                                 currentPage={page}
                                  view={view}
                                  isLoading={isLoading}
                                  isComplete={isComplete}
                                  isError={isError}
                                  hasNoRecords={hasNoRecords}
                                  handleClickLoadMore={this.onClickLoadMore}
+                                 handleClickPrevious={this.onClickPrevious}
+                                 handleClickNext={this.onClickNext}
                 />
             </div>
         );

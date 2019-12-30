@@ -165,6 +165,81 @@ footer #footerContainer #footerContent {
 #ImagesContainer #ImagesList .ImagesListRow {
   margin-bottom: 25px;
 }
+#ImagesContainer #ImagesTileContainer {
+  margin-top: 25px;
+}
+#ImagesContainer #ImagesTileContainer button.nav-container {
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  font-size: 3rem;
+}
+#ImagesContainer #ImagesTileContainer button.nav-container span {
+  font-size: 1.5rem;
+  position: relative;
+  top: -8px;
+}
+#ImagesContainer #ImagesTileContainer button.nav-container:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(71, 225, 227, 0.15);
+}
+#ImagesContainer #ImagesTileContainer button.nav-container:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+#ImagesContainer #ImagesTileContainer button.nav-container.prev span {
+  margin-left: 5px;
+}
+#ImagesContainer #ImagesTileContainer button.nav-container.next span {
+  margin-right: 5px;
+}
+#ImagesContainer #ImagesTileContainer .dont-display-on-smaller-screens .nav-container {
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#ImagesContainer #ImagesTileContainer .dont-display-on-smaller-screens .nav-container span {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  #ImagesContainer #ImagesTileContainer .dont-display-on-smaller-screens {
+    display: none;
+  }
+}
+#ImagesContainer #ImagesTileContainer .display-on-smaller-screens {
+  justify-content: space-around;
+  display: flex;
+}
+#ImagesContainer #ImagesTileContainer .display-on-smaller-screens .nav-container {
+  margin-top: 5px;
+}
+@media screen and (min-width: 992px) {
+  #ImagesContainer #ImagesTileContainer .display-on-smaller-screens {
+    display: none;
+  }
+}
+#ImagesContainer #ImagesTileContainer #tip {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 0.75rem;
+}
+#ImagesContainer #ImagesTileContainer #tip span {
+  margin-right: 5px;
+}
+#ImagesContainer #ImagesTileContainer #tip span:last-of-type {
+  margin: 0;
+}
+#ImagesContainer #ImagesTileContainer #tip .tiplabel,
+#ImagesContainer #ImagesTileContainer #tip .tiplabel * {
+  color: #47e1e3;
+}
 .ItemContainer {
   background: #0b0d1a;
   padding: 25px;

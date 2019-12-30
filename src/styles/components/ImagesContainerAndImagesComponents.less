@@ -54,4 +54,92 @@
     }
   }
 
+  #ImagesTileContainer {
+    margin-top: 25px;
+
+    button.nav-container {
+      border: none;
+      border-radius: 5px;
+      background: transparent;
+      cursor: pointer;
+      text-align: center;
+      font-size: 3rem;
+      span {
+        font-size: 1.5rem;
+        position: relative;
+        top: -8px;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(@secondary-color-rgb, .15)
+      }
+
+      &:disabled{
+        opacity:0.4;
+        cursor:not-allowed;
+      }
+
+      &.prev {
+        span {
+          margin-left: 5px;
+        }
+      }
+      &.next {
+        span {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .dont-display-on-smaller-screens {
+      .nav-container {
+        border: none;
+        border-radius: 5px;
+        background: transparent;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+        span {
+          display: none;
+        }
+      }
+
+      @media screen and(max-width: 991px) {
+        display: none;
+      }
+    }
+    .display-on-smaller-screens {
+      justify-content: space-around;
+      display: flex;
+
+      .nav-container {
+        margin-top: 5px;
+      }
+
+      @media screen and(min-width: 992px) {
+        display: none;
+      }
+
+    }
+
+    #tip {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 0.75rem;
+      span {
+        margin-right: 5px;
+        &:last-of-type {
+          margin: 0;
+        }
+      }
+      .tiplabel, .tiplabel * {
+        color: @secondary-color;
+      }
+    }
+  }
+
 }
