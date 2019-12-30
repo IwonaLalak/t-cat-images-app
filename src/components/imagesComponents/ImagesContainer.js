@@ -26,6 +26,14 @@ class ImagesContainer extends Component {
         }))
     }
 
+    onChangeFilters = (filters) => {
+        this.props.handleOnChangeFilters(filters);
+    }
+
+    onClickLoadMore = () => {
+        this.props.handleClickLoadMore()
+    }
+
     render() {
 
         let {view, isExpanded} = this.state;
@@ -35,7 +43,7 @@ class ImagesContainer extends Component {
             <div id={'ImagesContainer'}>
                 <Row>
                     <Col xs={isExpanded ? 12 : 9} lg={9}>
-                        <ImagesFilter handleClickExpand={this.onClickExpand}/>
+                        <ImagesFilter handleClickExpand={this.onClickExpand} handleOnChangeFilters={this.onChangeFilters}/>
                     </Col>
                     <Col xs={isExpanded ? 12 : 3} lg={3}>
                         <ImagesView handleChangeView={this.onChangeView} active={view}/>
@@ -43,7 +51,7 @@ class ImagesContainer extends Component {
                 </Row>
                 <div>
                     {
-                        view === 'list' && <ImagesList data={data}/>
+                        view === 'list' && <ImagesList data={data} handleClickLoadMore={this.onClickLoadMore}/>
                     }
                 </div>
             </div>
@@ -56,6 +64,8 @@ ImagesContainer.propTypes = {
     isLoading: PropTypes.bool,
     getError: PropTypes.bool,
     isComplete: PropTypes.bool,
+    handleOnChangeFilters: PropTypes.func,
+    handleClickLoadMore: PropTypes.func,
 }
 
 export default compose(withLoading, withHandleNoRecords, withHandleError)(ImagesContainer);

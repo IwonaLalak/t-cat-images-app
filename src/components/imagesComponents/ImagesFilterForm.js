@@ -36,15 +36,14 @@ class ImagesFilterForm extends Component {
 
         obj[newValueKey] = newValue;
 
-        let data = {
+        let filters = {
             order: obj.orderValue.value,
             type: obj.typeValue.value,
             category: (obj.categoryValue) && obj.categoryValue.id,
             breed: (obj.breedValue) && obj.breedValue.id,
         }
 
-        console.log(data)   // todo: up to HomeView or FavouriteView
-
+        this.props.handleOnChangeFilters(filters);
     }
 
     render() {
@@ -91,6 +90,7 @@ class ImagesFilterForm extends Component {
                                 styles={reactSelectStyles.styles}
                                 onChange={this.onChangeSelect}
                                 placeholder={'any'}
+                                isClearable={true}
                             />
                         </Col>
                         <Col lg={6}>
@@ -104,6 +104,7 @@ class ImagesFilterForm extends Component {
                                 styles={reactSelectStyles.styles}
                                 onChange={this.onChangeSelect}
                                 placeholder={'any'}
+                                isClearable={true}
                             />
                         </Col>
                     </Row>

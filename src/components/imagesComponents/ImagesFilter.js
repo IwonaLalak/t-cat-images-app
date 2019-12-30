@@ -42,6 +42,10 @@ class ImagesFilter extends Component {
         this.props.handleClickExpand();
     }
 
+    onChangeFilters = (filters) => {
+        this.props.handleOnChangeFilters(filters);
+    }
+
     render() {
 
         const {categories, breeds} = this.state;
@@ -53,7 +57,7 @@ class ImagesFilter extends Component {
                         <FontAwesomeIcon icon={faFilter}/> set filters
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey={0}>
-                        <ImagesFilterForm categories={categories} breeds={breeds}/>
+                        <ImagesFilterForm categories={categories} breeds={breeds} handleOnChangeFilters={this.onChangeFilters}/>
                     </Accordion.Collapse>
                 </Accordion>
             </div>

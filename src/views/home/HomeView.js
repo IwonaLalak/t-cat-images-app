@@ -25,7 +25,7 @@ class HomeView extends Component {
 
         this.setState({isLoading: true})
 
-        ImagesService.prepareQueryAndSendRequest(page, 50, null)
+        ImagesService.prepareQueryAndSendRequest(page, limit, filters)
             .then(({data}) => {
                 this.setState({data})
                 this.setState({isLoading: false, isComplete: true, hasNoRecords: data.length === 0})
@@ -37,12 +37,39 @@ class HomeView extends Component {
             })
     }
 
+    onChangeFilters = (filters) => {
+        this.setState({
+            filters: filters,
+            page: 0,
+            limit: 10,
+        }, () => {
+            this.getImages();
+        });
+    }
+
+    onClickLoadMore = () => {
+
+        this.setState(prevState => ({
+                page: prevState.page + 1,
+            }
+        ), () => {
+            this.getImages();
+        });
+    }
+
     render() {
 
         let {data, isLoading, isComplete, isError, hasNoRecords} = this.state;
 
         return (
-            <ImagesContainer data={data} isLoading={isLoading} isComplete={isComplete} isError={isError} hasNoRecords={hasNoRecords}/>
+            <ImagesContainer data={data}
+                             isLoading={isLoading}
+                             isComplete={isComplete}
+                             isError={isError}
+                             hasNoRecords={hasNoRecords}
+                             handleOnChangeFilters={this.onChangeFilters}
+                             handleClickLoadMore={this.onClickLoadMore}
+            />
         );
     }
 }
