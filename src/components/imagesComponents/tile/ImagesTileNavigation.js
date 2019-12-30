@@ -3,8 +3,26 @@ import {Col, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight, faLongArrowAltLeft, faLongArrowAltRight} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import keyboardCodes from "../../../utilities/keyboardCodes";
 
 class ImagesTileNavigation extends Component {
+
+    componentWillMount() {
+        document.addEventListener('keydown', this.handleKeydown, false)
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeydown, false)
+    }
+
+    handleKeydown = (key) => {
+        if (key.keyCode === keyboardCodes.key_LEFT) {
+            this.onClickPrevious()
+        }
+        else if (key.keyCode === keyboardCodes.key_RIGHT) {
+            this.onClickNext()
+        }
+    }
 
     onClickPrevious = () => {
         this.props.handleClickPrevious();

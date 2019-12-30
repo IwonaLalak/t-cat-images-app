@@ -4,7 +4,6 @@ import ImagesService from "../../services/ImagesService";
 import {Col, Row} from "react-bootstrap";
 import ImagesFilter from "../../components/imagesComponents/ImagesFilter";
 import ImagesView from "../../components/imagesComponents/ImagesView";
-import ImagesTileContainer from "../../components/imagesComponents/tile/ImagesTileContainer";
 
 class HomeView extends Component {
 
@@ -32,8 +31,6 @@ class HomeView extends Component {
     getImages = (page = this.state.page, limit = this.state.limit, filters = this.state.filters) => {
 
         this.setState({isLoading: true})
-
-        console.log(page, limit, filters)
 
         ImagesService.prepareQueryAndSendRequest(page, limit, filters)
             .then(({data}) => {
@@ -83,12 +80,16 @@ class HomeView extends Component {
     }
 
     onClickPrevious = () => {
-        this.setState(prevState => ({
-                page: prevState.page - 1,
-            }
-        ), () => {
-            this.getImages();
-        });
+
+        if (this.state.page > 0) {
+            this.setState(prevState => ({
+                    page: prevState.page - 1,
+                }
+            ), () => {
+                this.getImages();
+            });
+        }
+
     }
 
     onClickNext = () => {

@@ -24,7 +24,7 @@ class ImagesContainer extends Component {
 
     render() {
 
-        let {data, view,currentPage} = this.props;
+        let {data, view, currentPage} = this.props;
         return (
             <div>
                 {
@@ -46,7 +46,7 @@ class ImagesContainer extends Component {
 
 ImagesContainer.propTypes = {
     data: PropTypes.array,
-    currentPage:PropTypes.number,
+    currentPage: PropTypes.number,
     view: PropTypes.string,
     isLoading: PropTypes.bool,
     getError: PropTypes.bool,

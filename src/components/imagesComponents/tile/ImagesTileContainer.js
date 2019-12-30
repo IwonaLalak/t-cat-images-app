@@ -15,7 +15,7 @@ class ImagesTileContainer extends Component {
 
     render() {
 
-        let {data,currentPage} = this.props;
+        let {data, currentPage} = this.props;
 
         return (
             <div id={"ImagesTileContainer"}>
