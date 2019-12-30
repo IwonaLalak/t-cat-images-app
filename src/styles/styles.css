@@ -315,4 +315,8 @@ footer #footerContainer #footerContent {
 .ItemContainer .ItemActions ul .addedToFavourites *:not(span) {
   color: #ff2d4d !important;
 }
+#LoginModal {
+  margin-top: 4.5rem;
+  z-index: 99999;
+}
 /*# sourceMappingURL=styles.css.map */

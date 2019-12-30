@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Anton Regular'), local('Anton-Regular'), url(https://fonts.gstatic.com/s/anton/v11/1Ptgg87LROyAm3Kz-Co.ttf) format('truetype');
+}
+#LoginModal .modal-dialog {
+  margin-top: 2.5rem;
+}
+/*# sourceMappingURL=LoginModal.css.map */
