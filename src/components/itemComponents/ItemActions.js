@@ -33,14 +33,18 @@ class ItemActions extends Component {
     shareLink = () => {
 
         var el = document.createElement('textarea');
-        el.value = this.props.id;
+
+        let url = window.location.href;
+        let id = this.props.id
+
+        el.value = `${url}image/${id}`;
+
         el.setAttribute('readonly', '');
         el.style = {position: 'absolute', left: '-9999px'};
         document.body.appendChild(el);
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-
         this.setState({isCopied: true})
 
     }

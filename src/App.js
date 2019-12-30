@@ -4,6 +4,7 @@ import './index.css';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import HomeView from "./views/home/HomeView";
 import FavouritesView from "./views/favourites/FavouritesView";
+import ImageView from "./views/image/ImageView";
 import Header from "./shared/header/Header";
 import Footer from "./shared/footer/Footer";
 import Wrapper from "./shared/wrapper/Wrapper";
@@ -18,6 +19,7 @@ function App() {
                     <Switch>
                         <Route exact path={"/"} render={(props) => <HomeView {...props}/>}/>
                         <Route exact path={"/favourites"} render={(props) => <FavouritesView {...props}/>}/>
+                        <Route path={"/image/:id"} render={(props) => <ImageView {...props}/>}/>
                         <Redirect to={'/'}/>
                     </Switch>
                 </Wrapper>

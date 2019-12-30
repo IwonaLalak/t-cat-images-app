@@ -6,7 +6,6 @@ import withHandleError from "../../shared/hoc/withHandleError";
 import withHandleNoRecords from "../../shared/hoc/withHandleNoRecords";
 import {compose} from "recompose";
 import ImagesTileContainer from "./tile/ImagesTileContainer";
-import ImagesTileNavigation from "./tile/ImagesTileNavigation";
 
 class ImagesContainer extends Component {
 
@@ -24,11 +23,16 @@ class ImagesContainer extends Component {
 
     render() {
 
-        let {data, view, currentPage} = this.props;
+        let {data, view, currentPage,isSingleImage} = this.props;
         return (
             <div>
                 {
-                    view === 'list' && <ImagesList data={data} handleClickLoadMore={this.onClickLoadMore}/>
+                    view === 'list' &&
+                    <ImagesList
+                        data={data}
+                        isSingleImage={isSingleImage}
+                        handleClickLoadMore={this.onClickLoadMore}
+                    />
                 }
                 {
                     view === 'tile' &&
@@ -51,6 +55,7 @@ ImagesContainer.propTypes = {
     isLoading: PropTypes.bool,
     getError: PropTypes.bool,
     isComplete: PropTypes.bool,
+    isSingleImage: PropTypes.bool,
     handleClickLoadMore: PropTypes.func,
     handleClickPrevious: PropTypes.func,
     handleClickNext: PropTypes.func,

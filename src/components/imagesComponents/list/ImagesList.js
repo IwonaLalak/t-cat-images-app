@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import ImagesListRow from "./ImagesListRow";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import {faSyncAlt, faGrinBeam} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 class ImagesList extends Component {
 
@@ -13,7 +14,7 @@ class ImagesList extends Component {
 
     render() {
 
-        let {data} = this.props;
+        let {data,isSingleImage} = this.props;
 
         return (
             <div id={'ImagesList'}>
@@ -21,7 +22,14 @@ class ImagesList extends Component {
                     data.map(item => <ImagesListRow item={item}/>)
                 }
                 <div className={'text-center'}>
-                    <Button type={'button'} onClick={this.onClickLoadMore}><FontAwesomeIcon icon={faSyncAlt}/> load more</Button>
+                {
+                    isSingleImage?
+                        <Link to={'/'}>
+                            <Button type={'button'} ><FontAwesomeIcon icon={faGrinBeam}/> i want more</Button>
+                        </Link>
+                        :
+                        <Button type={'button'} onClick={this.onClickLoadMore}><FontAwesomeIcon icon={faSyncAlt}/> load more</Button>
+                }
                 </div>
             </div>
         );

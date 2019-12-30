@@ -3,6 +3,13 @@ import __config from "./__config";
 
 export default class ImagesService {
 
+    static getSpecificImageById(id) {
+        return axios({
+            method: 'get',
+            url: __config.HOST_API + `images/${id}`
+        })
+    }
+
     static getImagesWithSearchQueryParams(page = 0, limit = 10, order = 'RANDOM', mime = 'jpg,png,gif', category = '', breed = '') {
 
         return axios({
