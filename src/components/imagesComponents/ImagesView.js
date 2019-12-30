@@ -16,7 +16,7 @@ const ImagesView = (props) => {
                 </li>
             </ul>
             <ReactTooltip id={'tooltip-01'} place={"right"}>
-                <span>Change view of items RIGTto list or single tile.</span>
+                <span>Change view of items to list or single tile.</span>
             </ReactTooltip>
         </div>
     );
