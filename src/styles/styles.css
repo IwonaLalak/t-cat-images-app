@@ -32,6 +32,19 @@ body {
   text-decoration: none;
   color: #47e1e3;
 }
+button.btn-primary {
+  background: #37b7b9;
+  border-color: #37b7b9;
+}
+button.btn-primary:hover {
+  background: #47e1e3;
+  border-color: #47e1e3;
+}
+button.btn-primary:focus {
+  background: #47e1e3 !important;
+  border-color: #47e1e3 !important;
+  box-shadow: 0 0 0 0.2rem rgba(71, 225, 227, 0.15) !important;
+}
 header {
   background: #0b0d1a;
   position: fixed;
@@ -154,13 +167,6 @@ footer #footerContainer #footerContent {
 }
 #ImagesContainer #ImagesList {
   margin-top: 25px;
-}
-#ImagesContainer #ImagesList button.btn-primary {
-  background: #37b7b9;
-  border-color: #37b7b9;
-}
-#ImagesContainer #ImagesList button.btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(71, 225, 227, 0.15);
 }
 #ImagesContainer #ImagesList .ImagesListRow {
   margin-bottom: 25px;
@@ -318,5 +324,36 @@ footer #footerContainer #footerContent {
 #LoginModal {
   margin-top: 4.5rem;
   z-index: 99999;
+}
+#LoginModal * {
+  font-family: 'Anton', sans-serif;
+}
+#LoginModal h6 {
+  margin: 0;
+  color: grey;
+}
+#LoginModal form .form-group {
+  margin-bottom: 0;
+}
+#LoginModal form .form-group .form-control:focus {
+  border-color: rgba(71, 225, 227, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(71, 225, 227, 0.15);
+}
+#LoginModal form #loginerr {
+  color: #ff2d4d;
+  font-size: 0.75rem;
+  margin-top: 15px;
+  line-height: 31px;
+}
+#LoginModal form .btn-toolbar {
+  text-align: right;
+  display: block;
+  margin-top: 15px;
+}
+#LoginModal form .btn-toolbar button {
+  display: inline;
+}
+#LoginModal form .btn-toolbar button:first-of-type {
+  margin-right: 3px;
 }
 /*# sourceMappingURL=styles.css.map */

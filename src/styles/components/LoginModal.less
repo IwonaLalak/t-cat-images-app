@@ -3,4 +3,44 @@
 #LoginModal {
   margin-top: 4.5rem;
   z-index: 99999;
+
+  * {
+    font-family: @font-family;
+  }
+
+  h6 {
+    margin: 0;
+    color: grey;
+  }
+
+  form {
+    .form-group {
+      margin-bottom: 0;
+      .form-control:focus {
+        border-color: rgba(@secondary-color-rgb, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba(@secondary-color-rgb, .15)
+      }
+    }
+
+    #loginerr {
+      color: @favourite-color;
+      font-size: 0.75rem;
+      margin-top: 15px;
+      line-height: 31px;
+    }
+
+    .btn-toolbar {
+      text-align: right;
+      display: block;
+      margin-top: 15px;
+      button {
+        display: inline
+      }
+      button:first-of-type {
+        margin-right: 3px;
+      }
+    }
+
+  }
+
 }

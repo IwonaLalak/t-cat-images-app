@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHome, faHeart, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faHome, faHeart, faUser, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import LoginModal from "../loginModal/LoginModal";
+import LoginService from "../../../../services/LoginService";
+import {withRouter} from "react-router";
 
 class Navigation extends Component {
 
@@ -18,15 +20,35 @@ class Navigation extends Component {
         this.setState({showModal: false})
     }
 
-    onLogin = () => {
-
+    onLogin = (login) => {
+        LoginService.login(login)
+            .then(response => {
+                this.onCloseModal();
+                this.props.history.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
+
+    onLogout = () => {
+        LoginService.logout()
+            .then(response => {
+                this.onCloseModal();
+                this.props.history.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     render() {
 
         let {location: {pathname}} = this.props;
         let {showModal} = this.state;
+
+        let isUserLogged = LoginService.checkIfUserIsLogged();
 
         return (
             <React.Fragment>
@@ -37,15 +59,25 @@ class Navigation extends Component {
                                 <FontAwesomeIcon icon={faHome}/> <span>Home</span>
                             </Link>
                         </li>
-                        <li className={pathname === '/favourites' && 'active'}>
-                            <Link to={'/favourites'}>
-                                <FontAwesomeIcon icon={faHeart}/> <span>My favs</span>
-                            </Link>
-                        </li>
+                        {
+                            isUserLogged &&
+                            <li className={pathname === '/favourites' && 'active'}>
+                                <Link to={'/favourites'}>
+                                    <FontAwesomeIcon icon={faHeart}/> <span>My favs</span>
+                                </Link>
+                            </li>
+                        }
                         <li>
-                            <a onClick={this.onShowModal} style={{cursor: "pointer"}}>
-                                <FontAwesomeIcon icon={faUser}/> <span>Log in</span>
-                            </a>
+                            {
+                                isUserLogged ?
+                                    <a onClick={this.onLogout} style={{cursor: "pointer"}}>
+                                        <FontAwesomeIcon icon={faSignOutAlt}/> <span>Log out</span>
+                                    </a>
+                                    :
+                                    <a onClick={this.onShowModal} style={{cursor: "pointer"}}>
+                                        <FontAwesomeIcon icon={faUser}/> <span>Log in</span>
+                                    </a>
+                            }
                         </li>
                     </ul>
                 </nav>
@@ -56,4 +88,4 @@ class Navigation extends Component {
 
 }
 
-export default Navigation;
+export default withRouter(props => <Navigation {...props}/>);

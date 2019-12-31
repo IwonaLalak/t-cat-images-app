@@ -31,3 +31,21 @@ html, body {
   }
 
 }
+
+// button primary
+
+button.btn-primary {
+  background: @secondary-color-darker;
+  border-color: @secondary-color-darker;
+
+  &:hover {
+    background: @secondary-color;
+    border-color: @secondary-color;
+  }
+
+  &:focus {
+    background: @secondary-color !important;
+    border-color: @secondary-color !important;
+    box-shadow: 0 0 0 0.2rem rgba(@secondary-color-rgb, .15) !important;
+  }
+}

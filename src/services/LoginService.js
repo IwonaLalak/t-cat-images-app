@@ -1,11 +1,23 @@
 export default {
 
     login(user) {
-        localStorage.setItem('_catimages_current_user', user)
+        return new Promise((resolve, reject) => {
+            localStorage.setItem('_catimages_current_user', btoa(user))
+            if (this.checkIfUserIsLogged()) {
+                resolve(true)
+            } else
+                reject('Cannot login')
+        })
     },
 
     logout() {
-        localStorage.removeItem('_catimages_current_user')
+        return new Promise((resolve, reject) => {
+            localStorage.removeItem('_catimages_current_user')
+            if (!this.checkIfUserIsLogged()) {
+                resolve(true)
+            } else
+                reject('Cannot logout')
+        })
     },
 
     checkIfUserIsLogged() {
@@ -13,7 +25,9 @@ export default {
     },
 
     getCurrentUser() {
-        return localStorage.getItem('_catimages_current_user')
+        if (this.checkIfUserIsLogged())
+            return atob(localStorage.getItem('_catimages_current_user'))
+        else return null
     }
 
 }
