@@ -28,6 +28,12 @@ export default {
         if (this.checkIfUserIsLogged())
             return atob(localStorage.getItem('_catimages_current_user'))
         else return null
-    }
+    },
+
+    getCurrentUserEncoded() {
+        if (this.checkIfUserIsLogged())
+            return localStorage.getItem('_catimages_current_user');
+        else return null
+    },
 
 }

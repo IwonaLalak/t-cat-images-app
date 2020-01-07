@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart, faLink} from "@fortawesome/free-solid-svg-icons";
 import keyboardCodes from "../../utilities/keyboardCodes";
+import LoginService from "../../services/LoginService";
+import FavouriteService from "../../services/FavouriteService";
 
 class ItemActions extends Component {
 
@@ -50,13 +52,37 @@ class ItemActions extends Component {
     }
 
     addToFavourites = () => {
-        this.setState((prevState) => ({isAddedToFav: !prevState.isAddedToFav}));
 
-        //todo: rest
+        if (LoginService.checkIfUserIsLogged()) {
+
+            if (!this.state.isAddedToFav) {
+                let data = {
+                    "image_id": this.props.id,
+                    "sub_id": "usr_" + LoginService.getCurrentUserEncoded()
+                }
+
+                FavouriteService.addToFavourites(data)
+                    .then(response => {
+
+                        if (response.status < 300) {
+                            this.setState({isAddedToFav: true})
+                        } else {
+                            console.error('Something went wrong')
+                        }
+
+                    })
+                    .catch(error => {
+                        console.error('Something went wrong')
+                        console.log(error)
+                    })
+            }
+
+        }
     }
 
     render() {
         let {isCopied, isAddedToFav} = this.state;
+        let isLogged = LoginService.checkIfUserIsLogged();
 
         return (
             <div className={'ItemActions'}>
@@ -64,9 +90,12 @@ class ItemActions extends Component {
                     <li onClick={this.shareLink}>
                         <FontAwesomeIcon icon={faLink}/> <span>{isCopied ? <i>*copied*</i> : 'share'} </span>
                     </li>
-                    <li onClick={this.addToFavourites} className={isAddedToFav && 'addedToFavourites'}>
-                        <FontAwesomeIcon icon={faHeart}/> <span>{isAddedToFav ? 'favourite' : 'add to fav'}</span>
-                    </li>
+                    {
+                        isLogged &&
+                        <li onClick={this.addToFavourites} className={isAddedToFav && 'addedToFavourites'}>
+                            <FontAwesomeIcon icon={faHeart}/> <span>{isAddedToFav ? 'favourite' : 'add to fav'}</span>
+                        </li>
+                    }
                 </ul>
             </div>
         );
