@@ -18,6 +18,8 @@ ImagesListRow.propTypes = {
         PropTypes.shape({
             id: PropTypes.string,
             url: PropTypes.string,
+            height: PropTypes.number,
+            width: PropTypes.string,
         })
     )
 };
