@@ -46,7 +46,7 @@ class LoginForm extends Component {
                 <FormGroup>
                     <Row>
                         <Col sm={6}>
-                            {err && <div id={'loginerr'}>Please type at least 3 characters!</div>}
+                            {err && <div id={'loginerr'}>Please type at least 3 characters and no more than 50!</div>}
                         </Col>
                         <Col sm={6}>
                             <ButtonToolbar>

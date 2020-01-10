@@ -20,7 +20,7 @@ class LoginModal extends Component {
 
         let {login} = this.state;
 
-        if (login.length >= 3) {
+        if (login.length >= 3 || login.length <= 50) {
             this.props.handleLogin(login)
         } else {
             this.setState({err: true})
