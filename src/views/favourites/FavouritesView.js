@@ -6,6 +6,7 @@ import {Col, Row} from "react-bootstrap";
 import ImagesView from "../../components/imagesComponents/ImagesView";
 import ImagesContainer from "../../components/imagesComponents/ImagesContainer";
 import ViewService from "../../services/ViewService";
+import __application from "../../services/__application";
 
 const USER = "usr_" + LoginService.getCurrentUserEncoded();
 
@@ -23,6 +24,9 @@ class FavouritesView extends Component {
     }
 
     componentDidMount() {
+
+        document.title = 'My favs - ' + __application.APP_NAME;
+
         this.getFavourites();
         if (ViewService.checkIfViewIsSetted()) {
             this.setState({

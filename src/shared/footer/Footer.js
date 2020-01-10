@@ -1,7 +1,11 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
+import __application from "../../services/__application";
 
 const Footer = () => {
+
+    const {APP_NAME, APP_AUTHOR, APP_AUTHOR_GIT} = __application;
+
     return (
         <footer>
             <div id={'footerShadow'}></div>
@@ -10,7 +14,7 @@ const Footer = () => {
                     <Row>
                         <Col lg={12}>
                             <div id={'footerContent'}>
-                                &copy; 2019 Cat images by <a href={'https://github.com/IwonaLalak/'} target={'_blank'}>Iwona Lalak</a> | API by <a
+                                {APP_NAME} by <a href={APP_AUTHOR_GIT} target={'_blank'}>{APP_AUTHOR}</a> | API by <a
                                 href={'https://thecatapi.com/'} target={'_blank'}>TheCatApi.com</a>
                             </div>
                         </Col>

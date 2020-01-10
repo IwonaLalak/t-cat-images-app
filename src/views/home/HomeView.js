@@ -5,6 +5,7 @@ import {Col, Row} from "react-bootstrap";
 import ImagesFilter from "../../components/imagesComponents/ImagesFilter";
 import ImagesView from "../../components/imagesComponents/ImagesView";
 import ViewService from "../../services/ViewService";
+import __application from "../../services/__application";
 
 class HomeView extends Component {
 
@@ -26,6 +27,10 @@ class HomeView extends Component {
 
 
     componentDidMount() {
+
+
+        document.title = __application.APP_NAME;
+
         this.getImages();
 
         if (ViewService.checkIfViewIsSetted()) {

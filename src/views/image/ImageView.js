@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ImagesService from "../../services/ImagesService";
 import ImagesContainer from "../../components/imagesComponents/ImagesContainer";
+import __application from "../../services/__application";
 
 class ImageView extends Component {
 
@@ -13,13 +14,16 @@ class ImageView extends Component {
     }
 
     componentDidMount() {
-        this.getImage();
+
+        let id = this.props.match.params.id;
+
+        document.title = id + ' - ' + __application.APP_NAME;
+
+        this.getImage(id);
     }
 
 
-    getImage = () => {
-
-        let id = this.props.match.params.id;
+    getImage = (id) => {
 
         if (id) {
             this.setState({isLoading: true})
@@ -35,7 +39,7 @@ class ImageView extends Component {
                     this.setState({isLoading: false, isComplete: false, isError: true})
 
                 })
-        } else{
+        } else {
             this.setState({isComplete: false, isError: true})
         }
 
