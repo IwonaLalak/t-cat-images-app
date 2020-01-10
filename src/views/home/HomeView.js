@@ -4,6 +4,7 @@ import ImagesService from "../../services/ImagesService";
 import {Col, Row} from "react-bootstrap";
 import ImagesFilter from "../../components/imagesComponents/ImagesFilter";
 import ImagesView from "../../components/imagesComponents/ImagesView";
+import ViewService from "../../services/ViewService";
 
 class HomeView extends Component {
 
@@ -26,6 +27,13 @@ class HomeView extends Component {
 
     componentDidMount() {
         this.getImages();
+
+        if (ViewService.checkIfViewIsSetted()) {
+            this.setState({
+                view: ViewService.getView()
+            })
+        }
+
     }
 
     getImages = (page = this.state.page, limit = this.state.limit, filters = this.state.filters) => {
@@ -71,6 +79,7 @@ class HomeView extends Component {
     }
 
     onChangeView = (type) => {
+        ViewService.setView(type);
         this.setState({
             view: type,
             limit: type === 'list' ? 10 : 1

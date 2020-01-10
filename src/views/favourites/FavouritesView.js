@@ -3,9 +3,9 @@ import FavouriteService from "../../services/FavouriteService";
 import LoginService from "../../services/LoginService";
 import ImagesService from "../../services/ImagesService";
 import {Col, Row} from "react-bootstrap";
-import ImagesFilter from "../../components/imagesComponents/ImagesFilter";
 import ImagesView from "../../components/imagesComponents/ImagesView";
 import ImagesContainer from "../../components/imagesComponents/ImagesContainer";
+import ViewService from "../../services/ViewService";
 
 const USER = "usr_" + LoginService.getCurrentUserEncoded();
 
@@ -24,15 +24,19 @@ class FavouritesView extends Component {
 
     componentDidMount() {
         this.getFavourites();
+        if (ViewService.checkIfViewIsSetted()) {
+            this.setState({
+                view: ViewService.getView()
+            })
+        }
     }
 
     getFavourites = (page = this.state.page, limit = this.state.limit) => {
 
         this.setState({isLoading: true});
 
-
         FavouriteService.getFavourites(page, limit, USER)
-            .then(async({data}) => {
+            .then(async ({data}) => {
 
                 const promises = Array.from(data, async item => {
 
@@ -40,14 +44,13 @@ class FavouritesView extends Component {
 
                     return {
                         ...img,
-                        fav_id:item.id,
+                        fav_id: item.id,
                     }
                 })
 
-
                 const arrayOfItems = await Promise.all(promises);
 
-                this.setState({data:arrayOfItems})
+                this.setState({data: arrayOfItems})
                 this.setState({isLoading: false, isComplete: true, hasNoRecords: arrayOfItems.length === 0})
             })
             .catch((error) => {
@@ -55,8 +58,6 @@ class FavouritesView extends Component {
                 // this.setState({isLoading: false, isComplete: false, isError: true})
 
             })
-
-
     }
 
     async getSpecyficImage(id) {
@@ -64,8 +65,6 @@ class FavouritesView extends Component {
             return data;
         })
     }
-
-
 
     onClickLoadMore = () => {
         this.setState(prevState => ({
@@ -77,6 +76,7 @@ class FavouritesView extends Component {
     }
 
     onChangeView = (type) => {
+        ViewService.setView(type);
         this.setState({
             view: type,
             limit: type === 'list' ? 10 : 1
