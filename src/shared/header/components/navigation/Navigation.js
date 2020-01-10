@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHome, faHeart, faUser, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import {faHome, faHeart, faUser, faSignOutAlt, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import LoginModal from "../loginModal/LoginModal";
 import LoginService from "../../../../services/LoginService";
@@ -67,6 +67,11 @@ class Navigation extends Component {
                                 </Link>
                             </li>
                         }
+                        <li className={pathname === '/about' && 'active'}>
+                            <Link to={'/about'}>
+                                <FontAwesomeIcon icon={faInfoCircle}/> <span>About</span>
+                            </Link>
+                        </li>
                         <li>
                             {
                                 isUserLogged ?
