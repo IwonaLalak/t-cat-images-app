@@ -356,4 +356,20 @@ footer #footerContainer #footerContent {
 #LoginModal form .btn-toolbar button:first-of-type {
   margin-right: 3px;
 }
+#AboutView p,
+#AboutView li,
+#AboutView td,
+#AboutView a {
+  font-family: sans-serif;
+}
+#AboutView table tr {
+  border-bottom: 1px dotted #121225;
+}
+#AboutView table tr td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+#AboutView table tr td:last-of-type {
+  padding-left: 25px;
+}
 /*# sourceMappingURL=styles.css.map */

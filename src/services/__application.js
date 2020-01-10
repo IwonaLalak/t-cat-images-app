@@ -4,7 +4,8 @@ export default {
     APP_VER: 'v0.1',
     APP_UPDATE: '2020-01-10',
     APP_AUTHOR: 'Iwona Lalak',
+    APP_AUTHOR_SITE: 'https://iwonalalak.pl',
     APP_AUTHOR_GIT: 'https://github.com/IwonaLalak',
-    APP_AUTHOR_SITE: 'https://iwonalalak.pl'
+    APP_REPOSITORY: 'https://github.com/IwonaLalak/cat-images-app',
 
 }
