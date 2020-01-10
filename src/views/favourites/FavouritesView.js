@@ -41,7 +41,6 @@ class FavouritesView extends Component {
                     return {
                         ...img,
                         fav_id:item.id,
-                        created_at:item.created_at,
                     }
                 })
 

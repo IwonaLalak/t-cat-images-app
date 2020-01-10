@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight, faLongArrowAltLeft, faLongArrowAltRight} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import keyboardCodes from "../../../utilities/keyboardCodes";
+import {withRouter} from "react-router";
 
 class ImagesTileNavigation extends Component {
 
@@ -36,6 +37,7 @@ class ImagesTileNavigation extends Component {
     render() {
 
         let {children, currentPage} = this.props;
+        let isFavourites = this.props.history.location.pathname === '/favourites';
 
         return (
             <Row>
@@ -57,7 +59,7 @@ class ImagesTileNavigation extends Component {
                         <span>you can use your keyboard: </span>
                         <span className={'tiplabel'}><FontAwesomeIcon icon={faLongArrowAltLeft}/></span><span>prev,</span>
                         <span className={'tiplabel'}><FontAwesomeIcon icon={faLongArrowAltRight}/></span><span>next,</span>
-                        <span className={'tiplabel'}>F</span><span>to add to fav's,</span>
+                        <span className={'tiplabel'}>F</span><span>{isFavourites? 'to remove from favs,':'to add to favs,'}</span>
                         <span className={'tiplabel'}>S</span><span>to share</span>
                     </div>
                 </Col>
@@ -80,4 +82,4 @@ ImagesTileNavigation.propTypes = {
     handleClickNext: PropTypes.func,
 };
 
-export default ImagesTileNavigation;
+export default withRouter(props=> <ImagesTileNavigation {...props} />);

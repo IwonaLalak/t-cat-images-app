@@ -18,6 +18,12 @@ class ItemActions extends Component {
             document.addEventListener('keydown', this.handleKeydown, false)
     }
 
+    componentDidMount() {
+        this.setState({
+            isAddedToFav: Boolean(this.props.fav_id)
+        })
+    }
+
     componentWillUnmount() {
         if (this.props.allowUseKeydown)
             document.removeEventListener('keydown', this.handleKeydown, false)
@@ -25,7 +31,10 @@ class ItemActions extends Component {
 
     handleKeydown = (key) => {
         if (key.keyCode === keyboardCodes.key_F) {
-            this.addToFavourites()
+            if (Boolean(this.props.fav_id))
+                this.removeFromFavourites();
+            else
+                this.addToFavourites();
         }
         else if (key.keyCode === keyboardCodes.key_S) {
             this.shareLink()
@@ -37,7 +46,7 @@ class ItemActions extends Component {
         var el = document.createElement('textarea');
 
         let url = window.location.href;
-        let id = this.props.id
+        let id = this.props.id;
 
         el.value = `${url}image/${id}`;
 
@@ -80,9 +89,32 @@ class ItemActions extends Component {
         }
     }
 
+    removeFromFavourites = () => {
+        if (LoginService.checkIfUserIsLogged()) {
+            if (this.state.isAddedToFav) {
+                FavouriteService.removeFromFavourites(this.props.fav_id)
+                    .then(response => {
+
+                        if (response.status < 300) {
+                            this.setState({isAddedToFav: false})
+                        } else {
+                            console.error('Something went wrong')
+                        }
+
+                    })
+                    .catch(error => {
+                        console.error('Something went wrong')
+                        console.log(error)
+                    })
+            }
+        }
+    }
+
     render() {
         let {isCopied, isAddedToFav} = this.state;
         let isLogged = LoginService.checkIfUserIsLogged();
+
+        let isFavouritesView = Boolean(this.props.fav_id)
 
         return (
             <div className={'ItemActions'}>
@@ -92,8 +124,16 @@ class ItemActions extends Component {
                     </li>
                     {
                         isLogged &&
-                        <li onClick={this.addToFavourites} className={isAddedToFav && 'addedToFavourites'}>
-                            <FontAwesomeIcon icon={faHeart}/> <span>{isAddedToFav ? 'favourite' : 'add to fav'}</span>
+                        <li onClick={
+                            isFavouritesView ?
+                                this.removeFromFavourites
+                                :
+                                this.addToFavourites
+                        }
+                            className={isAddedToFav && 'addedToFavourites'}
+                        >
+                            <FontAwesomeIcon icon={faHeart}/> <span>
+                            {isAddedToFav ? 'favourite' : isFavouritesView? 'removed from favs' : 'add to fav'}</span>
                         </li>
                     }
                 </ul>
@@ -104,6 +144,7 @@ class ItemActions extends Component {
 
 ItemActions.propTypes = {
     id: PropTypes.string,
+    fav_id: PropTypes.string,
     allowUseKeydown: PropTypes.bool
 };
 

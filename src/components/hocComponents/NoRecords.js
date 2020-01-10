@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMeh} from "@fortawesome/free-solid-svg-icons";
+import {faMeh, faHandPointRight} from "@fortawesome/free-solid-svg-icons";
 
 const NoRecords = () => {
     return (
@@ -10,6 +10,13 @@ const NoRecords = () => {
             fontSize: "2rem"
         }}>
             <FontAwesomeIcon icon={faMeh}/> <span>Sorry! There's no matching records!</span>
+            <div
+                style={{cursor: "pointer"}}
+                onClick={() => window.location.reload()}>
+                <FontAwesomeIcon icon={faHandPointRight}/> go back
+            </div>
+
+
         </div>
     );
 };
