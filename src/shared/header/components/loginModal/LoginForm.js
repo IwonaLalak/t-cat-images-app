@@ -45,10 +45,10 @@ class LoginForm extends Component {
                 </FormGroup>
                 <FormGroup>
                     <Row>
-                        <Col sm={6}>
+                        <Col sm={8}>
                             {err && <div id={'loginerr'}>Please type at least 3 characters and no more than 50!</div>}
                         </Col>
-                        <Col sm={6}>
+                        <Col sm={4}>
                             <ButtonToolbar>
                                 <Button variant="secondary" size={'sm'} onClick={this.onClickClose}>
                                     Cancel
