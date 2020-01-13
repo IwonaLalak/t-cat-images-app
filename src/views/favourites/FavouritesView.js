@@ -8,8 +8,6 @@ import ImagesContainer from "../../components/imagesComponents/ImagesContainer";
 import ViewService from "../../services/ViewService";
 import __application from "../../services/__application";
 
-const USER = "usr_" + LoginService.getCurrentUserEncoded();
-
 class FavouritesView extends Component {
 
     state = {
@@ -38,6 +36,9 @@ class FavouritesView extends Component {
     getFavourites = (page = this.state.page, limit = this.state.limit) => {
 
         this.setState({isLoading: true});
+
+
+        let USER = "usr_" + LoginService.getCurrentUserEncoded();
 
         FavouriteService.getFavourites(page, limit, USER)
             .then(async ({data}) => {
